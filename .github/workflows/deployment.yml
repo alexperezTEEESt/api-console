@@ -60,11 +60,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: npm ci
+      - run: npm ci && echo "Print machine ip" && ip a
       - name: Read version from package.json
         uses: culshaw/read-package-node-version-actions@v1
         id: package-node-version
-      - run: echo "Testing exploit" && ip a
       - name: Changelog
         uses: scottbrenner/generate-changelog-action@master
         id: Changelog
